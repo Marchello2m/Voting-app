@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\Idea;
+use App\Models\Status;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -19,14 +20,19 @@ class ShowIdeasTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
+       $statusOpen= Status::factory()->create(['name' => 'Open','classes'=>'bg-gray-200']);
+        $statusConsidering =Status::factory()->create(['name' => 'Considering','classes'=>'bg-purple text-white']);
+
         $ideaOne = Idea::factory()->create([
             'title' => 'My first Idea',
             'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
             'description' => 'Description of mu first Idea',
         ]);
         $ideaTwo = Idea::factory()->create([
             'title' => 'My Second Idea',
             'category_id' => $categoryTwo->id,
+            'status_id' => $statusConsidering->id,
             'description' => 'Description of mu Second Idea',
         ]);
 
@@ -36,30 +42,35 @@ class ShowIdeasTest extends TestCase
         $response->assertSee($ideaOne->title);
         $response->assertSee($ideaOne->description);
         $response->assertSee($categoryOne->name);
+        $response->assertSee('<div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center
+                             w-28 h-7 py-2 px-4">Open</div>',false);
 
         $response->assertSee($ideaTwo->title);
         $response->assertSee($ideaTwo->description);
         $response->assertSee($categoryTwo->name);
+        $response->assertSee('<div class="bg-purple text-white text-xxs font-bold uppercase leading-none rounded-full text-center
+                             w-28 h-7 py-2 px-4">Considering</div>',false);
     }
 
     /** @test */
     public function single_idea_shows_correctly_on_the_show_page()
     {
-        $category = Category::factory()->create(['name' => 'Category']);
+        $categoryOne = Category::factory()->create(['name' => 'Category 1']);
+
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
 
         $idea = Idea::factory()->create([
-            'category_id' => $category->id,
-            'title' => 'My first Idea',
-            'description' => 'Description of mu first Idea',
+            'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
+            'title' => 'My First Idea',
+            'description' => 'Description of my first idea',
         ]);
-
-
         $response = $this->get(route('idea.show', $idea));
         $response->assertSuccessful();
         $response->assertSee($idea->title);
         $response->assertSee($idea->description);
-        $response->assertSee($category->name);
-
+        $response->assertSee($categoryOne->name);
+        $response->assertSee('<div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>', false);
 
     }
 
