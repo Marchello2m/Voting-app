@@ -28,14 +28,28 @@
 
     <div class="ideas-container space-y-6 my-8">
         @foreach($ideas as $idea)
-        <div class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+        <div
+            x-data
+            @click="
+                    const clicked = $event.target
+                    const target = clicked.tagName.toLowerCase()
+                    const ignores = ['button', 'svg', 'path', 'a']
+                    if (! ignores.includes(target)) {
+                        clicked.closest('.idea-container').querySelector('.idea-link').click()
+                    }
+                "
+            class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl
+            flex cursor-pointer"
+        >
             <div class="hidden md:block border-r border-gray-100 px-5 py-8">
                 <div class="text-center">
                     <div class="font-semibold text-2xl">12</div>
                     <div class="text-gray-500">Votes</div>
                 </div>
                 <div class="mt-8">
-                    <button class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold text-xxs uppercase rounded-xl transition duration-150 ease-in px-4 py-3">Vote</button>
+                    <button class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400
+                     font-bold text-xxs uppercase rounded-xl transition duration-150 ease-in px-4
+                     py-3">Vote</button>
                 </div>
             </div>
             <div class="flex flex-col md:flex-row flex-1 px-2 py-6">
@@ -46,7 +60,7 @@
                 </div>
                 <div class="w-full flex flex-col justify-between mx-2 md:mx-4">
                     <h4 class="text-xl font-semibold mt-2 md:mt-0">
-                        <a href="{{ route('idea.show',$idea) }}" class="hover:underline">{{ $idea->title }}</a>
+                        <a href="{{ route('idea.show',$idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         {{ $idea->description }}
