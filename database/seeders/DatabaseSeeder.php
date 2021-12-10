@@ -19,8 +19,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory()->create([
-            'name'=>'Martins',
-            'email'=>'marchello2m@gmail.com'
+            'name'=>'Mārtiņš',
+            'email'=>'marchello2m@gmail.com',
+
+
+
+
         ]);
         User::factory(19)->create();
 
@@ -36,6 +40,8 @@ class DatabaseSeeder extends Seeder
         Status::factory()->create(['name' => 'Closed','classes'=>'bg-red text-white']);
         // \App\Models\User::factory(10)->create();
         Idea::factory(100)->create();
+
+
 
 //Generate unique votes.ensure idea_id and User_id are unique for each row
 

@@ -14,6 +14,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+
         return [
             'name' => $this->faker->firstName(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -22,7 +23,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
-
+//md5('12345678'),//
     /**
      * Indicate that the model's email address should be unverified.
      *
