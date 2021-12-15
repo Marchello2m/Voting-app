@@ -5,13 +5,13 @@
 
     <div class="idea-container bg-white rounded-xl flex mt-4">
         <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
-            <div class="flex-none mx-2 md:mx-4">
+            <div class="flex-none mx-2 ">
                 <a href="#">
                     <img src="{{$idea->user->getAvatar()}}" alt="avatar" class="w-14 h-14 rounded-xl">
                 </a>
             </div>
             <div class="w-full mx-2 md:mx-4">
-                <h4 class="text-xl font-semibold">
+                <h4 class="text-xl font-semibold mt-2 md:mt-0">
                     <a href="#" class="hover:underline">{{$idea->title}}</a>
                 </h4>
                 <div class="text-gray-600 mt-3">
