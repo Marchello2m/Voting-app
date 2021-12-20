@@ -1,8 +1,6 @@
 <div class="idea-and-buttons container">
 
 
-
-
     <div class="idea-container bg-white rounded-xl flex mt-4">
         <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
             <div class="flex-none mx-2 ">
@@ -33,15 +31,21 @@
                     >
                         <div class="{{$idea->status->classes}} text-xxs font-bold uppercase leading-none rounded-full
                         text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
-                        <button
-                            class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition
+                        <div class="relative">
+
+                            <button
+                                class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition
                             duration-150 ease-in py-2 px-3"
-                            @click="isOpen = !isOpen"
-                        >
-                            <svg fill="currentColor" width="24" height="6"><path d="M2.97.061A2.969 2.969 0 000
+                                @click="isOpen = !isOpen"
+                            >
+                                <svg fill="currentColor" width="24" height="6">
+                                    <path d="M2.97.061A2.969 2.969 0 000
                              3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97
                              2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
-                                                                                 style="color: rgba(163, 163, 163, .5)"></svg>
+                                          style="color: rgba(163, 163, 163, .5)"/>
+                                </svg>
+
+                            </button>
                             <ul
                                 class="absolute w-44 text-left font-semibold bg-white shadow-dialog rounded-xl z-10
                                 py-3 md:ml-8 top-8 md:top-6 right-0 md:left-0"
@@ -51,16 +55,19 @@
 
                             >
                                 <li><a href="#" class="hover:bg-gray-100 block transition
-                                duration-150 ease-in px-5 py-3">Mark as Spam</a></li>
+                                duration-150 ease-in px-5 py-3">Edit Idea</a></li>
                                 <li><a href="#" class="hover:bg-gray-100 block transition
-                                duration-150 ease-in px-5 py-3">Delete Post</a></li>
+                                duration-150 ease-in px-5 py-3">Delete Idea</a></li>
+                                <li><a href="#" class="hover:bg-gray-100 block transition
+                                duration-150 ease-in px-5 py-3">Mark as Spam</a></li>
                             </ul>
-                        </button>
+                        </div>
                     </div>
 
                     <div class="flex items-center md:hidden mt-4 md:mt-0">
                         <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
-                            <div class="text-sm font-bold leading-none  @if($hasVoted)text-blue @endif " >{{$votesCount}}</div>
+                            <div
+                                class="text-sm font-bold leading-none  @if($hasVoted)text-blue @endif ">{{$votesCount}}</div>
                             <div class="text-xxs font-semibold leading-none text-gray-400">Votes</div>
                         </div>
                         @if ($hasVoted)
@@ -133,7 +140,7 @@
                                      stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172
                                      7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6
-                                     6 0 108.486 8.486L20.5 13" />
+                                     6 0 108.486 8.486L20.5 13"/>
                                 </svg>
                                 <span class="ml-1">Attach</span>
                             </button>
@@ -143,7 +150,7 @@
             </div>
             @auth
                 @if (auth()->user()->isAdmin())
-                    <livewire:set-status :idea="$idea" />
+                    <livewire:set-status :idea="$idea"/>
                 @endif
             @endauth
         </div>
