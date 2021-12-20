@@ -23,7 +23,20 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
+
 //md5('12345678'),//
+
+    public function admin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email' => 'marchello2m@gmail.com',
+            ];
+        });
+
+    }
+
+
     /**
      * Indicate that the model's email address should be unverified.
      *

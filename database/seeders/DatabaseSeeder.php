@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         Status::factory()->create(['name' => 'Implemented','classes'=>'bg-green text-white']);
         Status::factory()->create(['name' => 'Closed','classes'=>'bg-red text-white']);
         // \App\Models\User::factory(10)->create();
-        Idea::factory(100)->create();
+        Idea::factory(100)->existing()->create();
 
 
 
