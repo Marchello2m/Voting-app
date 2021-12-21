@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\Blade;
 use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,11 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-    //   view()->composer('layouts.app',function ($view){
-      //     $view->with([
-       //        'categories'=> Category::all(),
-        //   ]);
-     //  });
+        Blade::if('admin', function () {
+            return auth()->check() && auth()->user()->isAdmin();
+        });
 
     }
 }
