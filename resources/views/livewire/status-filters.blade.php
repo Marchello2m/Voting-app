@@ -16,4 +16,6 @@
                  hover:border-blue @if($status==='Closed')
                 border-blue text-gray-900 @endif">Closed ({{ $statusCount['closed'] }})</a></li>
     </ul>
+
+
 </nav>
