@@ -2,7 +2,6 @@
 'redirect' => false,
 'messageToDisplay' => '',
 ])
-
 <div
     x-cloak
     x-data="{
@@ -12,28 +11,31 @@
             this.isOpen = true
             this.messageToDisplay = message
             setTimeout(() => {
-this.isOpen = false
-}, 5000)
-}
-}"
-x-init="
-@if ($redirect)
-    $nextTick(() => showNotification(messageToDisplay))
+                this.isOpen = false
+            }, 5000)
+        }
+    }"
+    x-init="
+        @if ($redirect)
+        $nextTick(() => showNotification(messageToDisplay))
 @else
-    Livewire.on('ideaWasUpdated', message => {
-    showNotification(message)
-    })
-    Livewire.on('ideaWasMarkedAsSpam', message => {
-    showNotification(message)
-    })
-Livewire.on('ideaWasMarkedAsNotSpam', message => {
-showNotification(message)
-})
-Livewire.on('statusWasUpdated', message => {
-showNotification(message)
-})
+        Livewire.on('ideaWasUpdated', message => {
+            showNotification(message)
+        })
+        Livewire.on('ideaWasMarkedAsSpam', message => {
+            showNotification(message)
+        })
+        Livewire.on('ideaWasMarkedAsNotSpam', message => {
+            showNotification(message)
+        })
+        Livewire.on('statusWasUpdated', message => {
+            showNotification(message)
+        })
+        Livewire.on('commentWasAdded', message => {
+            showNotification(message)
+        })
 @endif
-"
+        "
     x-show="isOpen"
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 transform translate-x-8"
@@ -42,7 +44,6 @@ showNotification(message)
     x-transition:leave-start="opacity-100 transform translate-x-0"
     x-transition:leave-end="opacity-0 transform translate-x-8"
     @keydown.escape.window="isOpen = false"
-
     class="z-20 flex justify-between max-w-xs sm:max-w-sm w-full fixed bottom-0 right-0 bg-white rounded-xl shadow-lg border px-4 py-5 mx-2 sm:mx-6 my-8"
 >
     <div class="flex items-center">
