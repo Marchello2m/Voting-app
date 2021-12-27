@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Idea;
 use App\Models\Status;
 use App\Models\User;
@@ -54,6 +55,10 @@ class DatabaseSeeder extends Seeder
                     ]);
                 }
             }
+        }
+
+        foreach (Idea::all() as $idea ){
+            Comment::factory(5)->existing()->create(['idea_id'=>$idea->id]);
         }
     }
 }

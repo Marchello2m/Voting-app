@@ -15,6 +15,11 @@ class Idea extends Model
     const PAGINATION_COUNT = 10;
     public $guarded = [];
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function sluggable(): array
     {
         return [
