@@ -19,7 +19,8 @@ class IdeaShow extends Component
         'ideaWasUpdated',
         'ideaWasMarkedAsSpam',
         'ideaWasMarkedAsNotSpam',
-        'commentWasAdded'
+        'commentWasAdded',
+        'commentWasDeleted',
     ];
 
 
@@ -52,6 +53,11 @@ class IdeaShow extends Component
     {
         $this->idea->refresh();
     }
+    public function commentWasDeleted()
+    {
+        $this->idea->refresh();
+    }
+
 
     public function vote()
     {

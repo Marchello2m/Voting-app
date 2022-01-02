@@ -4,5 +4,4 @@
     modal-title="Mark Idea as Spam"
     modal-description="Are you sure you want to mark this idea as spam?"
     modal-confirm-button-text="Mark as Spam"
-    wire-click="markAsSpam"
-/>
+    wire-click="markAsSpam"></x-modal-confirm>

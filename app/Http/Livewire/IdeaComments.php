@@ -12,7 +12,7 @@ class IdeaComments extends Component
     use WithPagination;
 
     public $idea;
-    protected $listeners = ['commentWasAdded'];
+    protected $listeners = ['commentWasAdded','commentWasDeleted'];
 
     public function commentWasAdded()
     {
@@ -20,6 +20,11 @@ class IdeaComments extends Component
         $this->gotoPage($this->idea->comments()->paginate()->lastPage());
     }
 
+    public function commentWasDeleted()
+    {
+        $this->idea->refresh();
+        $this->gotoPage(1);
+    }
 
     public function mount(Idea $idea)
     {
