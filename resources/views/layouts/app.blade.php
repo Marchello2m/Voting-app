@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @livewireStyles
+    <livewire:styles />
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    @livewireScripts
+
+
 </head>
 <body class="font-sans bg-gray-background text-gray-900 text-sm">
+<livewire:scripts />
 <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
     <a href="/"><img src="{{ asset('img/logo.svg') }}" alt="logo"></a>
     <div class="flex items-center mt-2 md:mt-0">
@@ -108,6 +110,5 @@
 
 
 
-<livewire:scripts />
 </body>
 </html>
