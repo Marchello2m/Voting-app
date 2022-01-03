@@ -1,4 +1,4 @@
-<form wire:submit.prevent="createIdea" method="POST" class="space-y-4 px-4 py-6">
+<form wire:submit.prevent="createIdea" method="POST" class="space-y-4 px-4 py-6 ">
     <div>
         <input wire:model.defer="title" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl
         placeholder-gray-900
