@@ -21,10 +21,10 @@ class CommentNotifications extends Component
     {
         $this->notifications = collect([]);
         $this->isLoading = true;
-        $this->getNotificationsCount();
+        $this->getNotificationCount();
     }
 
-    public function getNotificationsCount()
+    public function getNotificationCount()
     {
         $this->notificationsCount = auth()->user()->unreadNotifications()->count();
 
@@ -97,7 +97,7 @@ class CommentNotifications extends Component
         }
 
         auth()->user()->unreadNotifications->markAsRead();
-        $this->getNotificationsCount();
+        $this->getNotificationCount();
         $this->getNotifications();
     }
 
