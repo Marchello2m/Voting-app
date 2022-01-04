@@ -3,8 +3,16 @@
 
 ## About Project
 
-Still In progress
-
+Instructions
+Clone the project.
+Go to the project folder using cd on your cmd or terminal.
+Run composer install.
+Copy the contents of .env.example to .env file in project's root directory.
+Create an empty MySQL database.
+Open the .env file and change DB_DATABASE, DB_USERNAME, and DB_PASSWORD to yours.
+Run php artisan migrate.
+Run php artisan serve.
+Go to localhost:8000.
 
 
 ## License
