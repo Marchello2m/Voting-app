@@ -42,7 +42,7 @@
             />
         @empty
             <div class="mx-auto w-70 mt-12">
-                <img src="{{ asset('img/stairs.svg') }}" alt="No Ideas" class="mx-auto">
+                <img src="{{ asset('img/stairs.svg') }}" alt="No Ideas" class="mx-auto ">
                 <div class="text-gray-400 text-center font-bold mt-6"> No ideas were found...</div>
             </div>
 

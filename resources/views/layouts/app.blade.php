@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Laracasts Voting</title>
+    <title>{{ $title ?? 'Voting-APP' }}</title>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
     <!-- Styles -->
@@ -43,10 +43,11 @@
                 @endauth
             </div>
         @endif
-        <a href="#">
-            <img src="https://s.gravatar.com/avatar/5f6728474d8b5356723019d370ed6a0d?s=80" alt="avatar" class="w-10 h-10
-            rounded-full">
-        </a>
+            @auth
+                <a href="#">
+                    <img src="{{ auth()->user()->getAvatar() }}" alt="avatar" class="w-10 h-10 rounded-full">
+                </a>
+            @endauth
     </div>
 </header>
 <main class="container mx-auto max-w-custom flex flex-col md:flex-row">

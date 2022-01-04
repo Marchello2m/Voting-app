@@ -1,7 +1,11 @@
 <div
     class="relative"
     x-data="{ isOpen: false }"
-    x-init="window.livewire.on('statusWasUpdated',()=>{
+    x-init="
+    Livewire.on('statusWasUpdated',()=>{
+      isOpen=false
+    })
+    Livewire.on('statusWasUpdatedError',()=>{
       isOpen=false
     })"
 >
