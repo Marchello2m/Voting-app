@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <livewire:styles />
+    <livewire:styles/>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -24,16 +24,16 @@
             <div class="px-6 py-4">
                 @auth
                     <div class="flex items-center space-x-4">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
                                                         this.closest('form').submit();">
-                            {{ __('Log out') }}
-                        </a>
-                    </form>
+                                {{ __('Log out') }}
+                            </a>
+                        </form>
 
-                       <livewire:comment-notifications />
+                        <livewire:comment-notifications/>
                     </div>
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
@@ -66,15 +66,15 @@
                 <p class="text-xs mt-4">
                     @auth
                         Let us know what you would like and we'll take a look over!
-                        @else
+                    @else
                         Please login to create an idea.
                     @endauth
 
                 </p>
             </div>
             @auth
-    <livewire:create-idea />
-             @else
+                <livewire:create-idea/>
+            @else
                 <div class="my-6 text-center">
                     <a
                         href="{{route('login')}}"
@@ -88,7 +88,7 @@
                         class="inline-block justify-center  h-11 text-xs bg-gray-200 font-semibold rounded-xl
                          border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3 mt-4"
                     >
-                       Sign Up
+                        Sign Up
                     </a>
                 </div>
             @endauth
@@ -97,7 +97,7 @@
         </div>
     </div>
     <div class="w-full px-2 md:px-0 md:w-175 ">
-      <livewire:status-filters />
+        <livewire:status-filters/>
 
         <div class="mt-8 pl-5">  {{-- paddings japiekarto --}}
             {{ $slot }}
@@ -113,7 +113,14 @@
     />
 @endif
 
+@if (session('error_message'))
+    <x-notification-success
+        type="error"
+        :redirect="true"
+        message-to-display="{{ (session('error_message')) }}"
+    />
+@endif
 
-<livewire:scripts />
+<livewire:scripts/>
 </body>
 </html>

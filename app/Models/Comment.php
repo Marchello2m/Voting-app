@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    protected $guarded =[];
-    protected $perPage =5;
+
+    protected $guarded = [];
+    protected $perPage = 20;
 
     public function user()
     {
@@ -21,6 +22,7 @@ class Comment extends Model
     {
         return $this->belongsTo(Idea::class);
     }
+
     public function status()
     {
         return $this->belongsTo(Status::class);

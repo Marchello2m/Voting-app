@@ -30,7 +30,8 @@ class CommentAdded extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['database'];
+        //'mail', for mail trap
     }
 
     /**
